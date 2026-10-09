@@ -1,33 +1,46 @@
-# PHPproject
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Таблица квадратов</title>
+    <meta charset="utf-8" />
+</head>
 
-<?php
-echo "<pre>";
+<body>
 
-echo "┌───┬" . str_repeat("──────┬", 9) . "──────┐\n";
+<table border="1" cellpadding="5">
 
-echo "│   │";
-for ($units = 0; $units <= 9; $units++) {
-    printf("  %d   │", $units);
-}
-echo "\n";
-
-for ($tens = 0; $tens <= 9; $tens++) {
-
-    echo "├───┼" . str_repeat("──────┼", 9) . "──────┤\n";
+    <tr>
+        <th>+</th>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+    </tr>
     
-    printf("│ %d │", $tens);
-    
-    for ($units = 0; $units <= 9; $units++) {
-        $number = ($tens * 10) + $units;
-        $square = $number * $number;
+    <?php
+    for ($i = 0; $i < 10; $i++)
+    {
+        echo "<tr>";
         
-        printf(" %-4d │", $square);
+
+        echo "<th>" . ($i * 10) . "</th>";
+        
+        for ($j = 0; $j < 10; $j++)
+        {
+            $num = $i * 10 + $j;
+            echo "<td>" . ($num * $num) . "</td>";
+        }
+        
+        echo "</tr>";
     }
-    
-    echo "\n";
-}
+    ?>
+</table>
 
-echo "└───┴" . str_repeat("──────┴", 9) . "──────┘\n";
-
-echo "</pre>";
-?>
+</body>
+</html>
