@@ -3,32 +3,31 @@
 <?php
 echo "<pre>";
 
-echo "     0    1    2    3    4    5    6    7    8    9\n\n";
+echo "┌───┬" . str_repeat("──────┬", 9) . "──────┐\n";
+
+echo "│   │";
+for ($units = 0; $units <= 9; $units++) {
+    printf("  %d   │", $units);
+}
+echo "\n";
 
 for ($tens = 0; $tens <= 9; $tens++) {
+
+    echo "├───┼" . str_repeat("──────┼", 9) . "──────┤\n";
     
-    echo $tens . "    ";
+    printf("│ %d │", $tens);
     
-    for ($units = 0; $units <= 9; $units++) 
-    {
+    for ($units = 0; $units <= 9; $units++) {
         $number = ($tens * 10) + $units;
         $square = $number * $number;
         
-        echo $square;
-        
-        if ($square < 10) {
-            echo "    ";
-        } elseif ($square < 100) {
-            echo "   ";
-        } elseif ($square < 1000) {
-            echo "  ";
-        } else {
-            echo " ";
-        }
+        printf(" %-4d │", $square);
     }
     
     echo "\n";
 }
+
+echo "└───┴" . str_repeat("──────┴", 9) . "──────┘\n";
 
 echo "</pre>";
 ?>
