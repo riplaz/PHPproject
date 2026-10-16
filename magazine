@@ -1,0 +1,41 @@
+<?php
+
+echo "<h1>Киоск</h1>";
+
+$products = ["пельмени", "сок", "молоко", "хлеб", "макароны"];
+$prices   = [300, 60, 110, 70, 150];
+$clients  = ["Vasya", "Vadim", "Kirill"];
+
+
+$carts = [
+    ["пельмени", "сок"],
+    ["хлеб", "молоко", "сыр"],  
+    ["макароны"],
+];
+
+for ($i = 0; $i < count($clients); $i++)
+{
+    echo "<h3>Покупатель: " . $clients[$i] . "</h3>";
+
+    $total = 0;
+
+    foreach ($carts[$i] as $item)
+    {
+    
+        $index = array_search($item, $products);
+
+        if ($index === false)
+        {
+            echo $item . " - нет в наличии<br>";
+        }
+        else
+        {
+            $total = $total + $prices[$index];
+            echo $item . " - " . $prices[$index] . " p<br>";
+        }
+    }
+
+    echo "<b>Итого: $total р</b><br>";
+}
+
+?>
